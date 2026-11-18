@@ -1,0 +1,54 @@
+name: Cypress Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cypress-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  cypress-run:
+    name: Run Cypress tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v7
+        with:
+          working-directory: automacao-cypress
+          browser: chrome
+
+      - name: Upload HTML report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: cypress-html-report
+          path: automacao-cypress/cypress/reports/html
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Upload screenshots of failures
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: cypress-screenshots
+          path: automacao-cypress/cypress/screenshots
+          if-no-files-found: ignore
+          retention-days: 14
