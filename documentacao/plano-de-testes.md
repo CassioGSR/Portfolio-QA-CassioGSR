@@ -43,10 +43,11 @@ Validar, por meio de testes automatizados ponta a ponta (E2E), os fluxos princip
 | Linguagem | JavaScript |
 | Padrão de projeto | Page Object Model |
 | Dados de teste | Fixture (usuários) e biblioteca Chance (dados aleatórios) |
-| Navegador | Electron, modo headless |
+| Navegador | Electron (local) e Chrome (CI), modo headless |
 | Execução | Windows, Node.js v24.13.0 |
 | Controle de versão | Git e GitHub |
 | Relatórios | cypress-mochawesome-reporter (HTML), gerado a cada `npm test` |
+| Integração contínua | GitHub Actions: execução a cada push e Pull Request na branch main |
 
 ## 6. Estratégia
 
@@ -82,3 +83,4 @@ Validar, por meio de testes automatizados ponta a ponta (E2E), os fluxos princip
 - Casos de teste com rastreabilidade ([casos-de-teste.md](casos-de-teste.md))
 - Este plano de testes
 - Relatório HTML de execução, com evidências em `evidencias/`
+- Pipeline de integração contínua (`.github/workflows/cypress.yml`)

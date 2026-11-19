@@ -27,7 +27,7 @@
 
 ## 2. Rastreabilidade e execução
 
-**Última execução:** 2026-11-11, Cypress 16.2.0
+**Última execução:** 2026-11-19, (GitHub Actions, Chrome, Cypress 16.2.0)
 
 | ID | Arquivo de automação | Título do teste no código | Resultado |
 |---|---|---|---|
