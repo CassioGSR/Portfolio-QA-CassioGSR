@@ -1,6 +1,6 @@
 # Portfólio QA: Cassio
 
-[![Cypress Tests](https://github.com/CassioGSR/Portifolio-QA-CassioGSR/actions/workflows/cypress.yml/badge.svg)](https://github.com/CassioGSR/Portifolio-QA-CassioGSR/actions/workflows/cypress.yml)
+[![Cypress Tests](https://github.com/CassioGSR/Portfolio-QA-CassioGSR/actions/workflows/cypress.yml/badge.svg)](https://github.com/CassioGSR/Portifolio-QA-CassioGSR/actions/workflows/cypress.yml)
 
 Automação de testes end-to-end do sistema OrangeHRM (versão demo pública), com Cypress e JavaScript. O projeto inclui plano de testes, casos de teste rastreáveis até o código e execução automática em CI.
 
@@ -49,7 +49,7 @@ O ID de cada caso aparece no título do teste (por exemplo, `CT-003: login - fai
 ## Estrutura do projeto
 
 ```
-portifolio-qa-cassio/
+portfolio-qa-cassio/
 ├── .github/workflows/cypress.yml   # pipeline de CI
 ├── automacao-cypress/
 │   ├── cypress/
@@ -70,8 +70,8 @@ portifolio-qa-cassio/
 **Pré-requisitos:** Node.js 22, 24 ou 26 ou superior (requisito do Cypress 16; o projeto foi desenvolvido com Node 24) e Git.
 
 ```bash
-git clone https://github.com/CassioGSR/Portifolio-QA-CassioGSR.git
-cd Portifolio-QA-CassioGSR/automacao-cypress
+git clone https://github.com/CassioGSR/Portfolio-QA-CassioGSR.git
+cd Portfolio-QA-CassioGSR/automacao-cypress
 npm ci
 ```
 
