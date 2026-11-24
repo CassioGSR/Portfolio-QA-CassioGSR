@@ -76,6 +76,7 @@ Validar, por meio de testes automatizados ponta a ponta (E2E), os fluxos princip
 | Erros JavaScript internos da aplicação podem reprovar testes (observado no logout) | Tratamento central em support/e2e.js, restrito às mensagens Cannot read properties of undefined (reading 'message' / 'response'); qualquer outro erro da aplicação continua reprovando o teste. |
 | Dados criados no cadastro de funcionários não são removidos | Aceitável no demo; em ambiente real, a limpeza seria feita via API |
 | As credenciais do demo são públicas e outras pessoas podem alterá-las | Credenciais centralizadas em uma fixture, fáceis de atualizar |
+| Alertas do `npm audit` sem correção por atualização em `glob`, `minimatch` e `mocha` (cadeia do gerador de relatório HTML) | Risco aceito em 2026-11-19: a única correção disponível rebaixa várias versões principais da cadeia; a suíte roda localmente e no CI, não é publicada nem processa dados de produção; reavaliar quando o `mocha` ou o `glob` lançarem versões corrigidas |
 
 ## 9. Entregáveis
 
