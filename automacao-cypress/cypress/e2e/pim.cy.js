@@ -12,11 +12,17 @@ describe('PIM Orange HRM Tests', () => {
   beforeEach(() => {
     cy.login(userData.userSuccess.username, userData.userSuccess.password)
     dashboardPage.checkDashboardPage()
-    cy.intercept('GET', '**/api/v2/pim/employees/*/personal-details').as('personalDetails')
+    cy.intercept('GET', '**/api/v2/pim/employees/*/personal-details').as(
+      'personalDetails',
+    )
   })
 
   it('CT-016: pim - add employee', () => {
-    pimPage.addEmployee(chance.first(), chance.last(), chance.hash({ length: 8 }))
+    pimPage.addEmployee(
+      chance.first(),
+      chance.last(),
+      chance.hash({ length: 8 }),
+    )
     cy.wait('@personalDetails')
     pimPage.checkEmployeeCreated()
   })

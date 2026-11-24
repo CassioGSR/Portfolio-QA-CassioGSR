@@ -1,4 +1,4 @@
-const { defineConfig } = require("cypress");
+const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
   reporter: 'cypress-mochawesome-reporter',
@@ -13,6 +13,6 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on)
     },
-    baseUrl: 'https://opensource-demo.orangehrmlive.com/web/index.php'
+    baseUrl: 'https://opensource-demo.orangehrmlive.com/web/index.php',
   },
-});
+})

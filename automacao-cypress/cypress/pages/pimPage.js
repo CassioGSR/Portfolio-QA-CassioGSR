@@ -3,16 +3,17 @@ class PimPage {
     const selectors = {
       firstNameField: "[name='firstName']",
       lastNameField: "[name='lastName']",
-      inputGroup: ".oxd-input-group",
+      inputGroup: '.oxd-input-group',
       submitButton: "[type='submit']",
-      toastMessage: ".oxd-toast",
-      tableCard: ".oxd-table-card",
+      toastMessage: '.oxd-toast',
+      tableCard: '.oxd-table-card',
     }
     return selectors
   }
 
   getFieldByLabel(labelText) {
-    return cy.contains('label', labelText)
+    return cy
+      .contains('label', labelText)
       .closest(this.selectorsList().inputGroup)
       .find('input')
   }
@@ -34,7 +35,10 @@ class PimPage {
     cy.intercept('POST', '**/api/v2/pim/employees').as('createEmployee')
     cy.get(this.selectorsList().submitButton).click()
     cy.wait('@createEmployee').its('response.statusCode').should('eq', 200)
-    cy.get(this.selectorsList().toastMessage, { timeout: 10000 }).should('contain', 'Successfully Saved')
+    cy.get(this.selectorsList().toastMessage, { timeout: 10000 }).should(
+      'contain',
+      'Successfully Saved',
+    )
   }
 
   addEmployee(firstName, lastName, employeeId) {
@@ -53,14 +57,16 @@ class PimPage {
   }
 
   searchByEmployeeId(employeeId) {
-    cy.intercept('GET', `**/api/v2/pim/employees*${employeeId}*`).as('searchEmployee')
+    cy.intercept('GET', `**/api/v2/pim/employees*${employeeId}*`).as(
+      'searchEmployee',
+    )
     this.getFieldByLabel('Employee Id').type(employeeId)
     cy.get(this.selectorsList().submitButton).click()
     cy.wait('@searchEmployee')
   }
 
   checkEmployeeInList(firstName, lastName) {
-    cy.get( this.selectorsList().tableCard, { timeout: 10000 })
+    cy.get(this.selectorsList().tableCard, { timeout: 10000 })
       .should('have.length', 1)
       .and('contain', firstName)
       .and('contain', lastName)
